@@ -2,11 +2,11 @@ version: "3.9"
 
 services:
   app:
-    image: nikkoadr/ujian:latest
+    image: nikkoadr/landing-page:latest
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ujian
+    container_name: landing-page
     restart: unless-stopped
 
     ports:
@@ -16,8 +16,6 @@ services:
       - .env
 
     volumes:
-      # hanya public storage (sesuai K8s)
-      - ./storage/app/public:/app/storage/app/public
       - ./bootstrap/cache:/app/bootstrap/cache
 
     healthcheck:
@@ -27,8 +25,8 @@ services:
       retries: 3
 
     networks:
-      - ujian-net
+      - landing-page-net
 
 networks:
-  ujian-net:
+  landing-net:
     driver: bridge
