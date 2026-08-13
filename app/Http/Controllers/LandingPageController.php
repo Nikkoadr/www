@@ -16,7 +16,8 @@ class LandingPageController extends Controller
         $tagline     = 'Bergerak Maju Menjadi yang Terdepan';
         $schoolLogo  = 'assets/img/logo.png';
 
-        $spmbUrl     = 'https://spmb.smkmuhkandanghaur.sch.id/';
+        $pcmbUrl     = 'https://pcmb.smkmuhkandanghaur.sch.id/form_pendaftaran';
+        $bkkUrl      = 'https://bkk.smkmuhkandanghaur.sch.id/';
         $tracerUrl   = '/tracer';
         $whatsapp    = '081122207770';
         $whatsappUrl = 'https://wa.me/6281122207770';
@@ -201,7 +202,8 @@ class LandingPageController extends Controller
             'schoolShort',
             'tagline',
             'schoolLogo',
-            'spmbUrl',
+            'pcmbUrl',
+            'bkkUrl',
             'tracerUrl',
             'whatsapp',
             'whatsappUrl',

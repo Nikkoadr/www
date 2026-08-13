@@ -122,7 +122,7 @@ $qrCodeUrl = "https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=20
                     <a href="/" class="flex items-center gap-3 group">
                         <div class="w-12 h-12 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center overflow-hidden">
                             <img 
-                                src="https://smkmuhkandanghaur.sch.id/logo.png" 
+                                src="{{ asset('assets/img/logo.png') }}" 
                                 alt="Logo <?= htmlspecialchars($schoolName) ?>" 
                                 class="w-10 h-10 object-contain"
                             >

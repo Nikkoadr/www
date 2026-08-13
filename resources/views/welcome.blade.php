@@ -341,377 +341,92 @@
      NAVBAR
 ========================================================= -->
 
-    <header
-        id="navbar"
-        class="
-        fixed
-        top-0
-        left-0
-        right-0
-        z-50
-        transition-all
-        duration-300
-    ">
-
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <nav>
-
-            <div
-                class="
-                max-w-7xl
-                mx-auto
-                px-5
-                lg:px-8
-            ">
-
-                <div
-                    class="
-                    h-24
-                    flex
-                    items-center
-                    justify-between
-                ">
-
+            <div class="max-w-7xl mx-auto px-5 lg:px-8">
+                <div class="h-24 flex items-center justify-between">
 
                     <!-- LOGO -->
-
-                    <a
-                        href="#home"
-                        class="
-                        flex
-                        items-center
-                        gap-3
-                    ">
-
-                        <div
-                            class="
-                            w-12
-                            h-12
-                            rounded-xl
-                            bg-white
-                            flex
-                            items-center
-                            justify-center
-                            shadow-lg
-                            overflow-hidden
-                        ">
-
-                            <img
-                                src="<?= htmlspecialchars($schoolLogo) ?>"
-                                alt="Logo <?= htmlspecialchars($schoolName) ?>"
-                                class="
-                                w-10
-                                h-10
-                                object-contain
-                            ">
-
+                    <a href="#home" class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center shadow-lg overflow-hidden">
+                            <img src="{{ $schoolLogo ?? asset('images/default-logo.png') }}" alt="Logo {{ $schoolName ?? 'Sekolah' }}" class="w-10 h-10 object-contain">
                         </div>
-
-
                         <div class="hidden sm:block">
-
-                            <div
-                                class="
-                                text-white
-                                font-extrabold
-                                text-sm
-                                tracking-tight
-                            ">
-
-                                SMK MUHAMMADIYAH
-
-                            </div>
-
-
-                            <div
-                                class="
-                                text-white/50
-                                text-[10px]
-                                tracking-[.25em]
-                            ">
-
-                                KANDANGHAUR
-
-                            </div>
-
+                            <div class="text-white font-extrabold text-sm tracking-tight">SMK MUHAMMADIYAH</div>
+                            <div class="text-white/50 text-[10px] tracking-[.25em]">KANDANGHAUR</div>
                         </div>
-
                     </a>
-
 
                     <!-- DESKTOP MENU -->
+                    <div class="hidden lg:flex items-center gap-8">
+                        <a href="#home" class="text-sm text-white/75 hover:text-white transition">Beranda</a>
+                        <a href="#profil" class="text-sm text-white/75 hover:text-white transition">Profil</a>
+                        <a href="#keahlian" class="text-sm text-white/75 hover:text-white transition">Keahlian</a>
+                        <a href="#fasilitas" class="text-sm text-white/75 hover:text-white transition">Fasilitas</a>
+                        <a href="#berita" class="text-sm text-white/75 hover:text-white transition">Berita</a>
+                        <a href="#kontak" class="text-sm text-white/75 hover:text-white transition">Kontak</a>
+                    
+                        <a href="{{ $pcmbUrl ?? '#' }}" class="text-sm text-white/75 hover:text-white transition">PCMB</a>
+                        <a href="{{ $bkkUrl ?? '#' }}" class="text-sm text-white/75 hover:text-white transition">BKK</a>
+                        <a href="{{ $tracerUrl ?? '#' }}" class="text-sm text-white/75 hover:text-white transition">Tracer</a>
 
-                    <div
-                        class="
-                        hidden
-                        lg:flex
-                        items-center
-                        gap-8
-                    ">
-
-                        <a
-                            href="#home"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Beranda
-                        </a>
-
-
-                        <a
-                            href="#profil"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Profil
-                        </a>
-
-
-                        <a
-                            href="#keahlian"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Keahlian
-                        </a>
-
-
-                        <a
-                            href="#fasilitas"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Fasilitas
-                        </a>
-
-
-                        <a
-                            href="#berita"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Berita
-                        </a>
-
-
-                        <a
-                            href="#kontak"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Kontak
-                        </a>
-                        <a
-                            href="<?= htmlspecialchars($tracerUrl) ?>"
-                            class="
-                            text-sm
-                            text-white/75
-                            hover:text-white
-                            transition
-                        ">
-                            Tracer
-                        </a>
-
-
-                        <a
-                            href="<?= htmlspecialchars($spmbUrl) ?>"
-                            target="_blank"
-                            class="
-                            px-5
-                            py-2.5
-                            rounded-full
-                            bg-white
-                            text-school-900
-                            font-bold
-                            text-sm
-                            hover:bg-school-50
-                            transition
-                            shadow-lg
-                        ">
-
-                            SPMB
-
-                        </a>
-
+                        <!-- AUTHENTICATION (Desktop) -->
+                        @if (Route::has('login'))
+                            <div class="flex items-center space-x-4">
+                                @auth
+                                    <a href="{{ url('/home') }}" class="px-5 py-2.5 rounded-full bg-white text-school-900 font-bold text-sm hover:bg-school-50 transition shadow-lg">
+                                        Dashboard
+                                    </a>
+                                @else
+                                    <a href="{{ route('login') }}" class="px-5 py-2.5 rounded-full bg-white text-school-900 font-bold text-sm hover:bg-school-50 transition shadow-lg">
+                                        Log in
+                                    </a>
+                                    @if (Route::has('register'))
+                                        <a href="{{ route('register') }}" class="px-5 py-2.5 rounded-full bg-white text-school-900 font-bold text-sm hover:bg-school-50 transition shadow-lg">
+                                            Daftar
+                                        </a>
+                                    @endif
+                                @endauth
+                            </div>
+                        @endif
                     </div>
 
-
                     <!-- MOBILE BUTTON -->
-
-                    <button
-                        id="mobileMenuButton"
-                        type="button"
-                        class="
-                        lg:hidden
-                        w-11
-                        h-11
-                        rounded-xl
-                        glass
-                        text-white
-                        flex
-                        items-center
-                        justify-center
-                    ">
-
-                        <svg
-                            class="w-6 h-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-
+                    <button id="mobileMenuButton" type="button" class="lg:hidden w-11 h-11 rounded-xl glass text-white flex items-center justify-center">
+                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
-
                     </button>
-
                 </div>
-
             </div>
-
 
             <!-- MOBILE MENU -->
-
-            <div
-                id="mobileMenu"
-                class="
-                hidden
-                lg:hidden
-                mx-5
-                mb-4
-                rounded-2xl
-                bg-school-950
-                border
-                border-white/10
-                p-4
-                shadow-2xl
-            ">
-
+            <div id="mobileMenu" class="hidden lg:hidden mx-5 mb-4 rounded-2xl bg-school-950 border border-white/10 p-4 shadow-2xl">
                 <div class="flex flex-col gap-1">
+                    <a href="#home" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Beranda</a>
+                    <a href="#profil" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Profil</a>
+                    <a href="#keahlian" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Program Keahlian</a>
+                    <a href="#fasilitas" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Fasilitas</a>
+                    <a href="#berita" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Berita</a>
+                    <a href="#kontak" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Kontak</a>
+                    <a href="{{ $pcmbUrl ?? '#' }}" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition" target="_blank" >PCMB</a>
+                    <a href="{{ $bkkUrl ?? '#' }}" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition" target="_blank" >BKK</a>
+                    <a href="{{ $tracerUrl ?? '#' }}" class="px-4 py-3 rounded-xl text-white hover:bg-white/10 transition">Tracer</a>
 
-                    <a
-                        href="#home"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Beranda
-                    </a>
-
-
-                    <a
-                        href="#profil"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Profil
-                    </a>
-
-
-                    <a
-                        href="#keahlian"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Program Keahlian
-                    </a>
-
-
-                    <a
-                        href="#fasilitas"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Fasilitas
-                    </a>
-
-
-                    <a
-                        href="#berita"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Berita
-                    </a>
-
-
-                    <a
-                        href="#kontak"
-                        class="
-                        px-4
-                        py-3
-                        rounded-xl
-                        text-white
-                        hover:bg-white/10
-                    ">
-                        Kontak
-                    </a>
-
-
-                    <a
-                        href="<?= htmlspecialchars($spmbUrl) ?>"
-                        target="_blank"
-                        class="
-                        mt-2
-                        text-center
-                        px-4
-                        py-3
-                        rounded-xl
-                        bg-white
-                        text-school-900
-                        font-bold
-                    ">
-
-                        Daftar SPMB
-
-                    </a>
-
+                    <!-- AUTHENTICATION (Mobile) -->
+                    @if (Route::has('login'))
+                        @auth
+                            <a href="{{ url('/home') }}" class="mt-2 text-center px-4 py-3 rounded-xl bg-white text-school-900 font-bold hover:bg-school-50 transition">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="mt-2 text-center px-4 py-3 rounded-xl bg-white text-school-900 font-bold hover:bg-school-50 transition">Log in</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="mt-2 text-center px-4 py-3 rounded-xl bg-white text-school-900 font-bold hover:bg-school-50 transition">Daftar</a>
+                            @endif
+                        @endauth
+                    @endif
                 </div>
-
             </div>
-
         </nav>
-
     </header>
 
 
@@ -848,7 +563,7 @@
 
 
                         <a
-                            href="<?= htmlspecialchars($spmbUrl) ?>"
+                            href="<?= htmlspecialchars($pcmbUrl) ?>"
                             target="_blank"
                             class="
                             inline-flex
@@ -865,7 +580,7 @@
                             transition
                         ">
 
-                            Daftar SPMB
+                            Daftar PCMB
 
                             <svg
                                 class="w-5 h-5"
@@ -2336,7 +2051,7 @@
 
 
                     <a
-                        href="<?= htmlspecialchars($spmbUrl) ?>"
+                        href="<?= htmlspecialchars($pcmbUrl) ?>"
                         target="_blank"
                         class="
                         inline-flex
@@ -2718,7 +2433,7 @@
 
 
     <!-- =========================================================
-     CTA SPMB (ANIMASI SCROLL)
+     CTA pcmb (ANIMASI SCROLL)
 ========================================================= -->
 
     <section
@@ -2851,7 +2566,7 @@
 
 
                 <a
-                    href="<?= htmlspecialchars($spmbUrl) ?>"
+                    href="<?= htmlspecialchars($pcmbUrl) ?>"
                     target="_blank"
                     class="
                     inline-flex
@@ -2870,7 +2585,7 @@
                     shadow-xl
                 ">
 
-                    Daftar SPMB Sekarang
+                    Daftar PCMB Sekarang
 
                     <span>→</span>
 
@@ -3735,7 +3450,7 @@
                     ">
 
                         <a
-                            href="<?= htmlspecialchars($spmbUrl) ?>"
+                            href="<?= htmlspecialchars($pcmbUrl) ?>"
                             target="_blank"
                             class="
                             block
@@ -3743,7 +3458,7 @@
                             transition
                         ">
 
-                            SPMB
+                            PCMB
 
                         </a>
 
